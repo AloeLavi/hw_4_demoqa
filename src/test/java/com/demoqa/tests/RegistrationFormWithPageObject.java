@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class TextBox {
+public class RegistrationFormWithPageObject {
 
     @BeforeAll
     static void setUp() {
