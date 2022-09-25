@@ -71,6 +71,20 @@ public class RegistrationFormPage {
         return this;
     }
 
+    public RegistrationFormPage setSubjects(String value){
+        $("#subjectsInput").setValue(value).pressEnter();
+        return this;
+    }
+    public RegistrationFormPage setHobbies(String value){
+        $(byText(value)).click();
+        return this;
+    }
+
+    public RegistrationFormPage setPicture(String value){
+        $("#uploadPicture").uploadFromClasspath(value);
+        return this;
+    }
+
     public RegistrationFormPage checkResultsTableVisible() {
         resultsModal.checkVisible();
 
