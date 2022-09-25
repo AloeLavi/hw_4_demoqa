@@ -1,6 +1,7 @@
 package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.demoqa.pages.RegistrationFormPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class RegistrationFormWithPageObject {
+
+
+    RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
     @BeforeAll
     static void setUp() {
@@ -22,19 +26,16 @@ public class RegistrationFormWithPageObject {
 
     @Test
     void fillNameTest(){
-        open("/automation-practice-form");
-       $("[id=firstName]").setValue("Valeria");
-       $("[id=lastName]").setValue("Bagrova");
 
-      $("[id=userEmail]").setValue("vbagrova123456@gmail.com");
+        registrationFormPage.openPage()
+                .setFirstName("Valeria")
+                .setLastName("Bagrova")
+                .setEmail("vbagrova123456@gmail.com")
+                .setGender("Female")
+                .setNumber("1234567890")
+                .setBirthDate("02", "August", "1994");
 
-        $("[id=genterWrapper]").$(byText("Female")).click();
-        $("#userNumber").setValue("1234567890");
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("August");
-         $(".react-datepicker__year-select").selectOption("1994");
-        $(".react-datepicker__day--002").click();
 
 
         $("#subjectsInput").setValue("Arts").pressEnter();
