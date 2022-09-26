@@ -5,9 +5,7 @@ import com.demoqa.pages.RegistrationFormPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+
 
 
 public class RegistrationFormWithPageObject {
@@ -37,7 +35,24 @@ public class RegistrationFormWithPageObject {
                 .setSubjects("Arts")
                 .setSubjects("Maths")
                 .setHobbies("Reading")
-                        .setPicture("img/crow-of-judgement.img");
+                .setPicture("img/crow.jpg")
+                .setAddress("My Street")
+                .setState("Haryana")
+                .setCity("Karnal")
+                .clickSubmit();
+
+
+        registrationFormPage.checkResultsTableVisible()
+                .checkResult("Student Name","Valeria Bagrova")
+                .checkResult("Student Email","vbagrova123456@gmail.com")
+                .checkResult("Gender","Female")
+                .checkResult("Mobile","1234567890")
+                .checkResult("Date of Birth","02 August,1994")
+                .checkResult("Subjects","Arts, Maths")
+                .checkResult("Hobbies","Reading")
+                .checkResult("Picture","crow.jpg")
+                .checkResult("Address","My Street")
+                .checkResult("State and City","Haryana Karnal");
 
 
 
@@ -45,14 +60,8 @@ public class RegistrationFormWithPageObject {
 
 
 
+/*
 
-        $("#currentAddress").setValue("Address 123");
-
-        $("#state").scrollTo().click();
-        $("[id=stateCity-wrapper]").$(byText("Haryana")).click();
-        $("#city").click();
-        $("[id=stateCity-wrapper]").$(byText("Karnal")).click();
-        $("#submit").scrollTo().click();
 
         //results
         $$(".table-responsive").findBy(text("Student Name")).shouldHave(text("Valeria Bagrova"));
@@ -62,10 +71,10 @@ public class RegistrationFormWithPageObject {
         $$(".table-responsive").findBy(text("Date of Birth")).shouldHave(text("02 August,1994"));
         $$(".table-responsive").findBy(text("Subjects")).shouldHave(text("Arts, Maths"));
         $$(".table-responsive").findBy(text("Hobbies")).shouldHave(text("Reading"));
-        $$(".table-responsive").findBy(text("Picture")).shouldHave(text("img/crow-of-judgement.jpg"));
+        $$(".table-responsive").findBy(text("Picture")).shouldHave(text("img/crow.jpg"));
         $$(".table-responsive").findBy(text("Address")).shouldHave(text("Address 123"));
         $$(".table-responsive").findBy(text("State and City")).shouldHave(text("Haryana Karnal"));
-
+*/
 
 
     }
